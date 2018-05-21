@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SN</th>
+      <th scope="col">Name</th>
+      <th scope="col">Marks</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr [ngClass]="{'badgrade': grade.marks < 65}" *ngFor="let grade of gradeService.grades; let i = index" [attr.data-index]="i">
+      <!-- <td>{{grade.id}}</td> -->
+      <td>{{i + 1}}</td>
+      <td>
+        <span *ngIf="editables.indexOf(grade.id) < 0">{{grade.name}}</span>
+        <input (keyup.enter)="toggleEditGrade(grade)" [(ngModel)]="grade.name" type="text" *ngIf="editables.indexOf(grade.id) > -1" [value]="grade.name" />
+      </td>
+      <td>
+          <span *ngIf="editables.indexOf(grade.id) < 0">{{grade.marks}}</span>
+          <input (keyup.enter)="toggleEditGrade(grade)" [(ngModel)]="grade.marks" type="text" *ngIf="editables.indexOf(grade.id) > -1" [value]="grade.marks" />
+        </td>
+      <td>
+        <button (click)="toggleEditGrade(grade)">{{ editables.indexOf(grade.id) > -1 ? 'Update' : 'Edit' }}</button>
+        <button (click)="deleteGrade(grade.id)">Delete</button>
+      </td>
+    </tr>

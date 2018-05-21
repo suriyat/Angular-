@@ -1,0 +1,20 @@
+<h3>The Marks Sheet</h3>
+<br/>
+<form [formGroup]="form">
+  <div class="input-group">
+    <div class="input-group-prepend">
+    </div>
+    <span class="input-group-text" id="">Enter Names and Marks >></span>
+    <input (keyup.enter)='createPost(obj)' #obj formControlName="name" type="text" class="form-control" pattern="[a-zA-Z]*" placeholder="Name">
+    <input (keyup.enter)='createPost(obj)' formControlName="marks" type="number" class="form-control" pattern="[0-9]*" placeholder="Marks">
+  </div>
+  <!-- <div *ngIf ="marks.touched && marks.invalid" class="alert alert-danger">
+      <div *ngIf = "marks.errors.required">Marks are required</div>
+      <div *ngIf ="marks.errors.minlength">Marks should be below >= 0</div>
+      <div *ngIf ="marks.errors.maxlength">Marks should be below <= 100</div>
+    </div>
+    <div *ngIf ="name.touched && name.invalid"class="alert alert-danger">
+        <div *ngIf = "name.errors.required">Name is required</div>
+        <div *ngIf ="name.errors.minlength">Name should be atleast {{name.errors.minlength.requiredLength}}</div>
+      </div> -->
+</form>
